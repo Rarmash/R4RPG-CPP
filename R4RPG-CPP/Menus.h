@@ -1,4 +1,5 @@
 #pragma once
 
-int mainmenu();
-int menu_fight();
+class Player;
+void mainmenu();
+void menu_fight();
