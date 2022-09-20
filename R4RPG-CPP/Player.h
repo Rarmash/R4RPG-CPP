@@ -12,6 +12,7 @@ public:
 	int MAXHP;
 	int PW;
 	int HEALING;
+	int SP;
 
 	void menu_stats();
 };

@@ -12,7 +12,8 @@ void mainmenu(Player &p) {
 		cout << "---" << endl;
 		cout << "1. Go fight!" << endl;
 		cout << "2. Check your stats!" << endl;
-		cout << "3. Close the game" << endl;
+		cout << "3. Upgrade your character" << endl;
+		cout << "4. Close the game" << endl;
 		cout << "Number: ";
 		cin >> n;
 		if (n == 1) {
@@ -22,6 +23,9 @@ void mainmenu(Player &p) {
 			p.menu_stats();
 		}
 		else if (n == 3) {
+			menu_upgrade(p);
+		}
+		else if (n == 4) {
 			save(p);
 			exit(0);
 		}

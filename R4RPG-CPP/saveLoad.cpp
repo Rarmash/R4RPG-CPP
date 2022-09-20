@@ -18,6 +18,7 @@ void save(Player &p) {
 	j["maxhp"] = p.MAXHP;
 	j["pw"] = p.PW;
 	j["healing"] = p.HEALING;
+	j["sp"] = p.SP;
 	remove("saves.json");
 	ofstream o("saves.json");
 	o << setw(4) << j << endl;
@@ -26,16 +27,37 @@ void save(Player &p) {
 }
 
 void load(Player& p) {
-	ifstream i("saves.json");
-	json j;
-	i >> j;
-	p.NAME = j["name"];
-	p.CLS = j["cls"];
-	p.LEVEL = j["level"];
-	p.XP = j["xp"];
-	p.MAXXP = j["maxxp"];
-	p.HP = j["hp"];
-	p.MAXHP = j["maxhp"];
-	p.PW = j["pw"];
-	p.HEALING = j["healing"];
+	ifstream testFile;
+	testFile.open("saves.json");
+	if (testFile) {
+		ifstream i("saves.json");
+		json j;
+		i >> j;
+		p.NAME = j["name"];
+		p.CLS = j["cls"];
+		p.LEVEL = j["level"];
+		p.XP = j["xp"];
+		p.MAXXP = j["maxxp"];
+		p.HP = j["hp"];
+		p.MAXHP = j["maxhp"];
+		p.PW = j["pw"];
+		p.HEALING = j["healing"];
+		p.SP = j["sp"];
+	}
+	else {
+		saveCreate(p);
+	}
+}
+
+void saveCreate(Player& p) {
+	p.NAME = "Player";
+	p.CLS = "Warrior";
+	p.LEVEL = 1;
+	p.XP = 0;
+	p.MAXXP = 5;
+	p.HP = 10;
+	p.MAXHP = 10;
+	p.PW = 1;
+	p.HEALING = 2;
+	p.SP = 0;
 }
