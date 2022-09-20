@@ -1,5 +1,5 @@
 #pragma once
+#include "Player.h"
 
-class Player;
-void mainmenu();
-void menu_fight();
+void mainmenu(Player &p);
+void menu_fight(Player &p);
