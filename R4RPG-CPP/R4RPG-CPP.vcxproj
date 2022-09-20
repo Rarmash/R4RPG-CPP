@@ -131,8 +131,10 @@
     <ClCompile Include="mainmenu.cpp" />
     <ClCompile Include="menu_fight.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="saveLoad.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="json.hpp" />
     <ClInclude Include="Menus.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>

@@ -7,6 +7,7 @@ using namespace std;
 
 void menu_fight(Player &p) {
 	system("cls||clear");
+	save(p);
 
 	//generator
 	random_device rd;

@@ -7,5 +7,6 @@ int main()
 {
     system("cls||clear");
     Player p;
+    load(p);
     mainmenu(p);
 }

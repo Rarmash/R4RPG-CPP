@@ -3,15 +3,15 @@
 class Player
 {
 public:
-	std::string NAME = "Player";
-	std::string CLS = "Warrior";
-	int LEVEL = 1;
-	int XP = 0;
-	int MAXXP = 5;	
-	int HP = 10;
-	int MAXHP = 10;
-	int PW = 2;
-	int HEALING = 2;
+	std::string NAME;
+	std::string CLS;
+	int LEVEL;
+	int XP;
+	int MAXXP;	
+	int HP;
+	int MAXHP;
+	int PW;
+	int HEALING;
 
 	void menu_stats();
 };

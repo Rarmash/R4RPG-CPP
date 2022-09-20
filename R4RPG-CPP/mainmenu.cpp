@@ -5,6 +5,7 @@ using namespace std;
 void mainmenu(Player &p) {
 	while (true) {
 		system("cls||clear");
+		save(p);
 		int n;
 		cout << "---" << endl;
 		cout << "Choose what to do!" << endl;
@@ -21,6 +22,7 @@ void mainmenu(Player &p) {
 			p.menu_stats();
 		}
 		else if (n == 3) {
+			save(p);
 			exit(0);
 		}
 		else {
