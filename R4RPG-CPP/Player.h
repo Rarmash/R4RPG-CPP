@@ -13,6 +13,8 @@ public:
 	int PW;
 	int HEALING;
 	int SP;
+	int MONEY;
+	int HPPOTION;
 
 	void menu_stats();
 };

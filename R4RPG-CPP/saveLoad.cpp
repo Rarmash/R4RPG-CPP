@@ -19,6 +19,8 @@ void save(Player &p) {
 	j["pw"] = p.PW;
 	j["healing"] = p.HEALING;
 	j["sp"] = p.SP;
+	j["money"] = p.MONEY;
+	j["hppotion"] = p.HPPOTION;
 	remove("saves.json");
 	ofstream o("saves.json");
 	o << setw(4) << j << endl;
@@ -43,6 +45,8 @@ void load(Player& p) {
 		p.PW = j["pw"];
 		p.HEALING = j["healing"];
 		p.SP = j["sp"];
+		p.MONEY = j["money"];
+		p.HPPOTION = j["hppotion"];
 	}
 	else {
 		saveCreate(p);
@@ -60,4 +64,6 @@ void saveCreate(Player& p) {
 	p.PW = 1;
 	p.HEALING = 2;
 	p.SP = 0;
+	p.MONEY = 0;
+	p.HPPOTION = 5;
 }

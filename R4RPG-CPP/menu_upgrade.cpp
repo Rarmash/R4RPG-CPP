@@ -7,7 +7,7 @@ void menu_upgrade(Player &p) {
 		system("cls||clear");
 		int n;
 		cout << "---" << endl;
-		cout << "Choose your upgrades! Skill points: " << p.SP;
+		cout << "Choose your upgrades! Skill points: " << p.SP << endl;
 		cout << "---" << endl;
 		cout << "1. HP: " << p.HP << "/" << p.MAXHP << endl;
 		cout << "2. Power: " << p.PW << endl;

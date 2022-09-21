@@ -12,8 +12,19 @@ void mainmenu(Player &p) {
 		cout << "---" << endl;
 		cout << "1. Go fight!" << endl;
 		cout << "2. Check your stats!" << endl;
-		cout << "3. Upgrade your character" << endl;
-		cout << "4. Close the game" << endl;
+		if (p.SP > 0) {
+			cout << "3. Upgrade your character" << endl;
+		}
+		else {
+			cout << "3. [CLOSED]" << endl;
+		}
+		if (p.MONEY > 0) {
+			cout << "4. Open shop" << endl;
+		}
+		else {
+			cout << "4. [CLOSED]" << endl;
+		}
+		cout << "5. Close the game" << endl;
 		cout << "Number: ";
 		cin >> n;
 		if (n == 1) {
@@ -26,6 +37,9 @@ void mainmenu(Player &p) {
 			menu_upgrade(p);
 		}
 		else if (n == 4) {
+			menu_shop(p);
+		}
+		else if (n == 5) {
 			save(p);
 			exit(0);
 		}

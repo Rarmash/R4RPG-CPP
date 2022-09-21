@@ -27,7 +27,7 @@ void menu_fight(Player &p) {
 		cout << p.NAME << ": " << p.HP << "/" << p.MAXHP << ". Power: " << p.PW << endl;
 		cout << "---" << endl;
 		cout << "1. Punch with power " << p.PW << endl;
-		cout << "2. Use heal potion (+" << p.HEALING << ")" << endl;
+		cout << "2. Use heal potion (+" << p.HEALING << ") (" << p.HPPOTION << " left)" << endl;
 		cout << "3. Run away!" << endl;
 		cout << "Number: ";
 		cin >> n;
@@ -56,12 +56,19 @@ void menu_fight(Player &p) {
 		}
 		else if (n == 2) {
 			system("cls||clear");
-			p.HP += p.HEALING;
-			if (p.HP > p.MAXHP) {
-				p.HP = p.MAXHP;
+			if (p.HPPOTION > 0) {
+				p.HP += p.HEALING;
+				p.HPPOTION -= 1;
+				if (p.HP > p.MAXHP) {
+					p.HP = p.MAXHP;
+				}
+				cout << "---" << endl;
+				cout << "+" << p.HEALING << " HP..." << endl;
 			}
-			cout << "---" << endl;
-			cout << "+" << p.HEALING << " HP..." << endl;
+			else {
+				cout << "---" << endl;
+				cout << "Not enough potions!" << endl;
+			}
 		}
 		else if (n == 3) {
 			system("cls||clear");
@@ -77,6 +84,7 @@ void menu_fight(Player &p) {
 			}
 		}
 	}
+	p.SP += 1;
 	p.XP += 1;
 	if (p.XP >= p.MAXXP) {
 		p.XP = 0;
