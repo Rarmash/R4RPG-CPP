@@ -37,18 +37,78 @@ void load(Player& p) {
 		ifstream i("saves.json");
 		json j;
 		i >> j;
-		p.NAME = j["name"];
-		p.CLS = j["cls"];
-		p.LEVEL = j["level"];
-		p.XP = j["xp"];
-		p.MAXXP = j["maxxp"];
-		p.HP = j["hp"];
-		p.MAXHP = j["maxhp"];
-		p.PW = j["pw"];
-		p.HEALING = j["healing"];
-		p.SP = j["sp"];
-		p.MONEY = j["money"];
-		p.HPPOTION = j["hppotion"];
+		try {
+			p.NAME = j["name"];
+		}
+		catch (const exception& ex) {
+			p.NAME = "Player";
+		}
+		try {
+			p.CLS = j["cls"];
+		}
+		catch (const exception& ex) {
+			p.CLS = "Warrior";
+		}
+		try {
+			p.LEVEL = j["level"];
+		}
+		catch (const exception& ex) {
+			p.LEVEL = 1;
+		}
+		try {
+			p.XP = j["xp"];
+		}
+		catch (const exception& ex) {
+			p.XP = 0;
+		}
+		try {
+			p.MAXXP = j["maxxp"];
+		}
+		catch (const exception& ex) {
+			p.MAXXP = 5;
+		}
+		try {
+			p.HP = j["hp"];
+		}
+		catch (const exception& ex) {
+			p.HP = 10;
+		}
+		try {
+			p.MAXHP = j["maxhp"];
+		}
+		catch (const exception& ex) {
+			p.MAXHP = 10;
+		}
+		try {
+			p.PW = j["pw"];
+		}
+		catch (const exception& ex) {
+			p.PW = 6;
+		}
+		try {
+			p.HEALING = j["healing"];
+		}
+		catch (const exception& ex) {
+			p.HEALING = 5;
+		}
+		try {
+			p.SP = j["sp"];
+		}
+		catch (const exception& ex) {
+			p.SP = 0;
+		}
+		try {
+			p.MONEY = j["money"];
+		}
+		catch (const exception& ex) {
+			p.MONEY = 0;
+		}
+		try {
+			p.HPPOTION = j["hppotion"];
+		}
+		catch (const exception& ex) {
+			p.HPPOTION = 10;
+		}
 	}
 	else {
 		saveCreate(p);
@@ -95,7 +155,6 @@ void saveCreate(Player& p) {
 	p.LEVEL = 1;
 	p.XP = 0;
 	p.MAXXP = 5;
-	p.HEALING = 5;
 	p.SP = 0;
 	p.MONEY = 0;
 	p.HPPOTION = 10;

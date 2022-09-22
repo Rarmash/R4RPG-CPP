@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\shop_potions">
+      <UniqueIdentifier>{e3d1948a-0e62-4aed-bc52-d0895ff60e0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -37,7 +40,7 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="shop_pages\potions.cpp">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Исходные файлы\shop_potions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
