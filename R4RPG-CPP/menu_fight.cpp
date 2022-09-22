@@ -2,6 +2,7 @@
 #include <random>
 #include <chrono>
 #include <thread>
+#include <cmath>
 #include "Menus.h"
 using namespace std;
 
@@ -12,13 +13,13 @@ void menu_fight(Player &p) {
 	//generator
 	random_device rd;
 	mt19937 gen(rd());
-	uniform_int_distribution<> distr(1, 10);
+	uniform_int_distribution<> distr(10, 20);
 	uniform_int_distribution<> distr1(1, 5);
 	uniform_int_distribution<> randAttack(1, 2);
 	uniform_int_distribution<> runAway(1, 5);
 
-	int ehp = distr(gen);
-	int epw = distr1(gen);
+	int ehp = distr(gen) + ceil(p.MAXHP * 0.33);
+	int epw = distr1(gen) + ceil(p.PW * 0.25);
 
 	while (ehp > 0) {
 		int n;
@@ -84,11 +85,14 @@ void menu_fight(Player &p) {
 			}
 		}
 	}
-	p.SP += 1;
-	p.XP += 1;
-	if (p.XP >= p.MAXXP) {
-		p.XP = 0;
-		p.MAXXP *= 5;
-		p.LEVEL += 1;
+	if (ehp <= 0) {
+		p.MONEY += 1;
+		p.SP += 1;
+		p.XP += 1;
+		if (p.XP >= p.MAXXP) {
+			p.XP = 0;
+			p.MAXXP *= 5;
+			p.LEVEL += 1;
+		}
 	}
 }

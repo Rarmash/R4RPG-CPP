@@ -17,7 +17,7 @@ void shop_potions(Player& p) {
 		if (n == 1) {
 			if (p.MONEY >= 1) {
 				p.MONEY -= 1;
-				p.HPPOTION += 1;
+				p.HPPOTION += 5;
 			}
 			else {
 				cout << "---" << endl;
