@@ -5,7 +5,7 @@ using namespace std;
 
 template<class C, typename T>
 bool contains(C&& c, T t) {
-	return std::find(std::begin(c), std::end(c), t) != std::end(c);
+	return find(begin(c), end(c), t) != end(c);
 };
 
 void menu_fight(Player &p) {
@@ -18,21 +18,20 @@ void menu_fight(Player &p) {
 	//generator
 	random_device rd;
 	mt19937 gen(rd());
-
-	uniform_int_distribution<> plus_ehp();
-	uniform_int_distribution<> plus_epw();
+	
+	int plus_ehp, plus_epw;
 
 	if (contains(enemiesspawnregular, enemy)) {
-		plus_ehp(10, 20);
-		plus_epw(2, 10);
+		plus_ehp = enemiesspawnregularhp[rand() % enemiesspawnregularhp.size()];
+		plus_epw = enemiesspawnregularpw[rand() % enemiesspawnregularpw.size()];
 	}
 	else if (contains(enemiesspawnnormal, enemy)) {
-		plus_ehp(30, 50);
-		plus_epw(6, 14);
+		plus_ehp = enemiesspawnnormalhp[rand() % enemiesspawnnormalhp.size()];
+		plus_epw = enemiesspawnnormalpw[rand() % enemiesspawnnormalpw.size()];
 	}
 	else if (contains(enemiesspawnnormal, enemy)) {
-		plus_ehp(75, 100);
-		plus_epw(10, 20);
+		plus_ehp = enemiesspawnbosseshp[rand() % enemiesspawnbosseshp.size()];
+		plus_epw = enemiesspawnbossespw[rand() % enemiesspawnbossespw.size()];
 	}
 
 	uniform_int_distribution<> randAttack(1, 2);
@@ -40,6 +39,11 @@ void menu_fight(Player &p) {
 
 	int ehp = plus_ehp + ceil(p.MAXHP * 0.33);
 	int epw = plus_epw + ceil(p.PW * 0.25);
+
+	enemy[0] = toupper(enemy[0]);
+	for (int i = 1; enemy[i] != '\0'; ++i) {
+		enemy[i] = tolower(enemy[i]);
+	}
 
 	while (ehp > 0) {
 		int n;
