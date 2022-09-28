@@ -42,6 +42,9 @@
     <ClCompile Include="shop_pages\potions.cpp">
       <Filter>Исходные файлы\shop_potions</Filter>
     </ClCompile>
+    <ClCompile Include="menu_location.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menus.h">

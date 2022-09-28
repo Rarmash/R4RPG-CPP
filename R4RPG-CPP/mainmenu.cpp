@@ -11,7 +11,9 @@ void mainmenu(Player &p) {
 		cout << "Choose what to do!" << endl;
 		cout << "---" << endl;
 		cout << "1. Go fight!" << endl;
+		//cout << "2. Go to the mine!" << endl;
 		cout << "2. Check your stats!" << "\t" << "        | HP: " << p.HP << "/" << p.MAXHP << endl;
+		//cout << "4. Check your inventory" << endl;
 		if (p.SP > 0) {
 			cout << "3. Upgrade your character" << "\t" << "| Skill points: " << p.SP << endl;
 		}
@@ -24,7 +26,14 @@ void mainmenu(Player &p) {
 		else {
 			cout << "4. [CLOSED]" << endl;
 		}
-		cout << "5. Close the game" << endl;
+		//cout << "7. Open craft menu" << endl;
+		string loc = p.LOCATION;
+		loc[0] = toupper(loc[0]);
+		for (int i = 1; loc[i] != '\0'; ++i) {
+			loc[i] = tolower(loc[i]);
+		}
+		cout << "5. Change your location" << "\t" << "        | Current location: " << loc << endl;
+		cout << "6. Close the game" << endl;
 		cout << "Number: ";
 		cin >> n;
 		if (n == 1) {
@@ -40,12 +49,11 @@ void mainmenu(Player &p) {
 			menu_shop(p);
 		}
 		else if (n == 5) {
+			menu_location(p);
+		}
+		else if (n == 6) {
 			save(p);
 			exit(0);
-		}
-		else {
-			system("cls||clear");
-			mainmenu(p);
 		}
 	}
 }

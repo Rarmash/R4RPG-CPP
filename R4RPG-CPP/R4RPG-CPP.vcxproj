@@ -130,6 +130,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainmenu.cpp" />
     <ClCompile Include="menu_fight.cpp" />
+    <ClCompile Include="menu_location.cpp" />
     <ClCompile Include="menu_shop.cpp" />
     <ClCompile Include="menu_upgrade.cpp" />
     <ClCompile Include="Player.cpp" />

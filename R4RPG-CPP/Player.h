@@ -15,6 +15,8 @@ public:
 	int SP;
 	int MONEY;
 	int HPPOTION;
+	std::string LOCATION;
+	bool SANDSPASS;
 
 	void menu_stats();
 };

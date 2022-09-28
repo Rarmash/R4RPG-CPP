@@ -12,33 +12,56 @@ void menu_fight(Player &p) {
 	system("cls||clear");
 	save(p);
 
-	srand(time(0));
-	string enemy = enemiesspawn[rand() % enemiesspawn.size()];
+	string enemy;
+	int ehp, epw;
 
 	//generator
 	random_device rd;
 	mt19937 gen(rd());
-	
-	int plus_ehp, plus_epw;
-
-	if (contains(enemiesspawnregular, enemy)) {
-		plus_ehp = enemiesspawnregularhp[rand() % enemiesspawnregularhp.size()];
-		plus_epw = enemiesspawnregularpw[rand() % enemiesspawnregularpw.size()];
-	}
-	else if (contains(enemiesspawnnormal, enemy)) {
-		plus_ehp = enemiesspawnnormalhp[rand() % enemiesspawnnormalhp.size()];
-		plus_epw = enemiesspawnnormalpw[rand() % enemiesspawnnormalpw.size()];
-	}
-	else if (contains(enemiesspawnnormal, enemy)) {
-		plus_ehp = enemiesspawnbosseshp[rand() % enemiesspawnbosseshp.size()];
-		plus_epw = enemiesspawnbossespw[rand() % enemiesspawnbossespw.size()];
-	}
-
 	uniform_int_distribution<> randAttack(1, 2);
 	uniform_int_distribution<> runAway(1, 5);
 
-	int ehp = plus_ehp + ceil(p.MAXHP * 0.33);
-	int epw = plus_epw + ceil(p.PW * 0.25);
+	int plus_ehp, plus_epw;
+
+	srand(time(0));
+	if (p.LOCATION == "spawn") {
+		enemy = enemiesspawn[rand() % enemiesspawn.size()];
+
+		if (contains(enemiesspawnregular, enemy)) {
+			plus_ehp = enemiesspawnregularhp[rand() % enemiesspawnregularhp.size()];
+			plus_epw = enemiesspawnregularpw[rand() % enemiesspawnregularpw.size()];
+		}
+		else if (contains(enemiesspawnnormal, enemy)) {
+			plus_ehp = enemiesspawnnormalhp[rand() % enemiesspawnnormalhp.size()];
+			plus_epw = enemiesspawnnormalpw[rand() % enemiesspawnnormalpw.size()];
+		}
+		else if (contains(enemiesspawnnormal, enemy)) {
+			plus_ehp = enemiesspawnbosseshp[rand() % enemiesspawnbosseshp.size()];
+			plus_epw = enemiesspawnbossespw[rand() % enemiesspawnbossespw.size()];
+		}
+
+		ehp = plus_ehp + ceil(p.MAXHP * 0.33);
+		epw = plus_epw + ceil(p.PW * 0.25);
+	}
+	else if (p.LOCATION == "sands") {
+		enemy = enemiessands[rand() % enemiessands.size()];
+
+		if (contains(enemiessandsregular, enemy)) {
+			plus_ehp = enemiessandsregularhp[rand() % enemiessandsregularhp.size()];
+			plus_epw = enemiessandsregularpw[rand() % enemiessandsregularpw.size()];
+		}
+		else if (contains(enemiessandsnormal, enemy)) {
+			plus_ehp = enemiessandsnormalhp[rand() % enemiessandsnormalhp.size()];
+			plus_epw = enemiessandsnormalpw[rand() % enemiessandsnormalpw.size()];
+		}
+		else if (contains(enemiessandsnormal, enemy)) {
+			plus_ehp = enemiessandsbosseshp[rand() % enemiessandsbosseshp.size()];
+			plus_epw = enemiessandsbossespw[rand() % enemiessandsbossespw.size()];
+		}
+
+		ehp = plus_ehp + ceil(p.MAXHP * 0.33);
+		epw = plus_epw + ceil(p.PW * 0.25);
+	}
 
 	enemy[0] = toupper(enemy[0]);
 	for (int i = 1; enemy[i] != '\0'; ++i) {
