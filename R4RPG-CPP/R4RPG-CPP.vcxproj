@@ -137,7 +137,9 @@
     <ClCompile Include="shop_pages\potions.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Enemies.h" />
     <ClInclude Include="json.hpp" />
+    <ClInclude Include="Libraries.h" />
     <ClInclude Include="Menus.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>

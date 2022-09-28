@@ -1,30 +1,50 @@
-#include <iostream>
-#include <random>
-#include <chrono>
-#include <thread>
-#include <cmath>
+#include "Libraries.h"
+#include "Enemies.h"
 #include "Menus.h"
 using namespace std;
+
+template<class C, typename T>
+bool contains(C&& c, T t) {
+	return std::find(std::begin(c), std::end(c), t) != std::end(c);
+};
 
 void menu_fight(Player &p) {
 	system("cls||clear");
 	save(p);
 
+	srand(time(0));
+	string enemy = enemiesspawn[rand() % enemiesspawn.size()];
+
 	//generator
 	random_device rd;
 	mt19937 gen(rd());
-	uniform_int_distribution<> distr(10, 20);
-	uniform_int_distribution<> distr1(1, 5);
+
+	uniform_int_distribution<> plus_ehp();
+	uniform_int_distribution<> plus_epw();
+
+	if (contains(enemiesspawnregular, enemy)) {
+		plus_ehp(10, 20);
+		plus_epw(2, 10);
+	}
+	else if (contains(enemiesspawnnormal, enemy)) {
+		plus_ehp(30, 50);
+		plus_epw(6, 14);
+	}
+	else if (contains(enemiesspawnnormal, enemy)) {
+		plus_ehp(75, 100);
+		plus_epw(10, 20);
+	}
+
 	uniform_int_distribution<> randAttack(1, 2);
 	uniform_int_distribution<> runAway(1, 5);
 
-	int ehp = distr(gen) + ceil(p.MAXHP * 0.33);
-	int epw = distr1(gen) + ceil(p.PW * 0.25);
+	int ehp = plus_ehp + ceil(p.MAXHP * 0.33);
+	int epw = plus_epw + ceil(p.PW * 0.25);
 
 	while (ehp > 0) {
 		int n;
 		cout << "---" << endl;
-		cout << "Enemy: " << ehp << ". Power: " << epw << endl;
+		cout << enemy << ": " << ehp << ". Power: " << epw << endl;
 		cout << p.NAME << ": " << p.HP << "/" << p.MAXHP << ". Power: " << p.PW << endl;
 		cout << "---" << endl;
 		cout << "1. Punch with power " << p.PW << endl;

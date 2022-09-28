@@ -1,0 +1,13 @@
+#pragma once
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <Windows.h>
+#include <string>
+#include <locale>
+#include <random>
+#include <chrono>
+#include <thread>
+#include <cmath>
+#include <vector>
+#include <algorithm>

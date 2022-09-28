@@ -1,9 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <stdio.h>
-#include <Windows.h>
-#include <string>
-#include <locale>
+#include "Libraries.h"
 #include "Menus.h"
 #include "json.hpp"
 using json = nlohmann::json;
