@@ -15,6 +15,12 @@ void menu_location(Player& p) {
 		else {
 			cout << "<CLOSED>" << endl;
 		}
+		if (p.SNOWKINGDOMPASS == true) {
+			cout << "3. Snow kingdom" << endl;
+		}
+		else {
+			cout << "<CLOSED>" << endl;
+		}
 		int n;
 		cout << "Number: ";
 		cin >> n;
@@ -24,6 +30,10 @@ void menu_location(Player& p) {
 		}
 		if (n == 2 && p.SANDSPASS == true) {
 			p.LOCATION = "sands";
+			break;
+		}
+		if (n == 3 && p.SNOWKINGDOMPASS == true) {
+			p.LOCATION = "snow kingdom";
 			break;
 		}
 	}

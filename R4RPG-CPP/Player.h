@@ -17,6 +17,7 @@ public:
 	int HPPOTION;
 	std::string LOCATION;
 	bool SANDSPASS;
+	bool SNOWKINGDOMPASS;
 
 	void menu_stats();
 };

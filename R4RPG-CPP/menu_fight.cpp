@@ -20,6 +20,8 @@ void menu_fight(Player &p) {
 	mt19937 gen(rd());
 	uniform_int_distribution<> randAttack(1, 2);
 	uniform_int_distribution<> runAway(1, 5);
+	uniform_int_distribution<> sandsPassChance(1, 100);
+	uniform_int_distribution<> snowKingdomPassChance(1, 250);
 
 	int plus_ehp, plus_epw;
 
@@ -57,6 +59,25 @@ void menu_fight(Player &p) {
 		else if (contains(enemiessandsnormal, enemy)) {
 			plus_ehp = enemiessandsbosseshp[rand() % enemiessandsbosseshp.size()];
 			plus_epw = enemiessandsbossespw[rand() % enemiessandsbossespw.size()];
+		}
+
+		ehp = plus_ehp + ceil(p.MAXHP * 0.33);
+		epw = plus_epw + ceil(p.PW * 0.25);
+	}
+	else if (p.LOCATION == "snow kingdom") {
+		enemy = enemiessnowkingdom[rand() % enemiessnowkingdom.size()];
+
+		if (contains(enemiessnowkingdomregular, enemy)) {
+			plus_ehp = enemiessnowkingdomregularhp[rand() % enemiessnowkingdomregularhp.size()];
+			plus_epw = enemiessnowkingdomregularpw[rand() % enemiessnowkingdomregularpw.size()];
+		}
+		else if (contains(enemiessnowkingdomnormal, enemy)) {
+			plus_ehp = enemiessnowkingdomnormalhp[rand() % enemiessnowkingdomnormalhp.size()];
+			plus_epw = enemiessnowkingdomnormalpw[rand() % enemiessnowkingdomnormalpw.size()];
+		}
+		else if (contains(enemiessnowkingdombosses, enemy)) {
+			plus_ehp = enemiessnowkingdombosseshp[rand() % enemiessnowkingdombosseshp.size()];
+			plus_epw = enemiessnowkingdombossespw[rand() % enemiessnowkingdombossespw.size()];
 		}
 
 		ehp = plus_ehp + ceil(p.MAXHP * 0.33);
@@ -140,6 +161,12 @@ void menu_fight(Player &p) {
 			p.XP = 0;
 			p.MAXXP *= 5;
 			p.LEVEL += 1;
+		}
+		if (sandsPassChance(gen) == 100 && p.SANDSPASS == false && p.LOCATION == "spawn") {
+			p.SANDSPASS = 1;
+		}
+		if (snowKingdomPassChance(gen) == 250 && p.SNOWKINGDOMPASS == false && p.LOCATION == "sands") {
+			p.SNOWKINGDOMPASS = 1;
 		}
 	}
 }

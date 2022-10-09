@@ -20,6 +20,7 @@ void save(Player &p) {
 	j["hppotion"] = p.HPPOTION;
 	j["location"] = p.LOCATION;
 	j["sandspass"] = p.SANDSPASS;
+	j["snowkingdompass"] = p.SNOWKINGDOMPASS;
 	remove("saves.json");
 	ofstream o("saves.json");
 	o << setw(4) << j << endl;
@@ -118,6 +119,12 @@ void load(Player& p) {
 		catch (const exception& ex) {
 			p.SANDSPASS = false;
 		}
+		try {
+			p.SNOWKINGDOMPASS = j["snowkingdompass"];
+		}
+		catch (const exception& ex) {
+			p.SNOWKINGDOMPASS = false;
+		}
 	}
 	else {
 		saveCreate(p);
@@ -169,4 +176,5 @@ void saveCreate(Player& p) {
 	p.HPPOTION = 10;
 	p.LOCATION = "spawn";
 	p.SANDSPASS = false;
+	p.SNOWKINGDOMPASS = false;
 }
